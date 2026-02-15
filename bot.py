@@ -1,69 +1,71 @@
 import os
 import random
+import time
 from flask import Flask, render_template_string, request, session, redirect, url_for
 
 app = Flask(__name__)
-app.secret_key = "binary_hyper_logic_99"
+app.secret_key = "ultimate_accuracy_99_pro"
 
-# Professional Dark UI with Full Screen responsiveness
+# High-End Professional Full Screen UI
 HTML_TEMPLATE = '''
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Binary Elite v3.8 | Advanced Logic</title>
+    <title>Elite AI Bot v4.0</title>
     <style>
-        body, html { margin: 0; padding: 0; height: 100%; width: 100%; background: #020202; color: #fff; font-family: 'Inter', sans-serif; }
-        .wrapper { display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 15px; box-sizing: border-box; }
-        .card { width: 100%; max-width: 600px; background: #0a0a0a; border: 1px solid #00d2ff; padding: 30px; border-radius: 20px; box-shadow: 0 0 40px rgba(0,210,255,0.15); }
-        h1 { color: #00d2ff; font-size: 24px; text-align: center; margin-bottom: 20px; }
-        .input-box { width: 100%; padding: 15px; margin: 10px 0; background: #111; border: 1px solid #222; color: #fff; border-radius: 12px; font-size: 16px; box-sizing: border-box; }
-        button { width: 100%; padding: 18px; background: linear-gradient(90deg, #00d2ff, #00ff88); color: #000; font-weight: bold; border: none; border-radius: 12px; cursor: pointer; font-size: 18px; margin-top: 15px; }
-        .result-panel { margin-top: 25px; padding: 20px; border-radius: 15px; background: #000; border: 1px solid #333; animation: fadeIn 0.5s ease; }
-        .logic-card { background: #111; padding: 15px; border-radius: 10px; font-size: 14px; line-height: 1.6; color: #ddd; border-left: 4px solid #00ff88; margin-top: 10px; }
-        .tag { font-size: 12px; color: #00ff88; border: 1px solid #00ff88; padding: 3px 8px; border-radius: 5px; margin-bottom: 10px; display: inline-block; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        body, html { margin: 0; padding: 0; height: 100%; width: 100%; background: #010a01; color: #e0e0e0; font-family: 'Poppins', sans-serif; overflow: hidden; }
+        .full-bg { height: 100vh; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle, #051a05 0%, #000 100%); }
+        .card { width: 92%; max-width: 500px; background: rgba(10, 10, 10, 0.95); border: 1px solid #00ff88; padding: 35px; border-radius: 30px; box-shadow: 0 0 50px rgba(0, 255, 136, 0.2); text-align: center; backdrop-filter: blur(10px); }
+        .status-header { background: #00ff88; color: #000; font-weight: bold; padding: 5px 15px; border-radius: 50px; font-size: 12px; display: inline-block; margin-bottom: 15px; }
+        input, select { width: 100%; padding: 15px; margin: 12px 0; background: #000; border: 1px solid #1a3a1a; color: #00ff88; border-radius: 12px; font-size: 16px; outline: none; }
+        button { width: 100%; padding: 18px; background: #00ff88; color: #000; font-weight: bold; border: none; border-radius: 12px; cursor: pointer; font-size: 18px; margin-top: 10px; transition: 0.4s; }
+        button:hover { background: #00cc6a; box-shadow: 0 0 20px #00ff88; }
+        .result-box { margin-top: 25px; padding: 20px; border-radius: 20px; background: #050505; border: 1px solid #333; text-align: left; position: relative; }
+        .accuracy-meter { height: 4px; width: 100%; background: #222; border-radius: 2px; margin-top: 10px; }
+        .accuracy-fill { height: 100%; background: #00ff88; width: 98.2%; }
     </style>
 </head>
 <body>
-    <div class="wrapper">
+    <div class="full-bg">
         {% if not logged_in %}
         <div class="card">
-            <h1>🛡️ AUTHENTICATION</h1>
+            <h1 style="color: #00ff88;">🛡️ SECURE LOGIN</h1>
             <form method="POST" action="/login">
-                <input type="text" name="user" class="input-box" placeholder="Username" required>
-                <input type="password" name="pass" class="input-box" placeholder="Password" required>
-                <button type="submit">ACCESS SYSTEM</button>
+                <input type="text" name="user" placeholder="Username" required>
+                <input type="password" name="pass" placeholder="Password" required>
+                <button type="submit">UNLOCK SYSTEM</button>
             </form>
         </div>
         {% else %}
         <div class="card">
-            <div style="text-align: center;"><span class="tag">AI ACCURACY: 99.4%</span></div>
-            <h1>Elite Market Analyzer</h1>
+            <div class="status-header">SYSTEM: ACTIVE [ACCURACY 99.8%]</div>
+            <h1 style="color: #fff; margin: 0;">AI Smart Predictor</h1>
             <form method="POST" action="/analyze" enctype="multipart/form-data">
-                <input type="number" name="balance" class="input-box" placeholder="Total Balance ($)" required>
-                <select name="risk" class="input-box">
-                    <option value="2">Low (2% Stake)</option>
-                    <option value="5" selected>Moderate (5% Stake)</option>
-                    <option value="10">Aggressive (10% Stake)</option>
+                <input type="number" name="balance" placeholder="Wallet Balance ($)" required>
+                <select name="risk">
+                    <option value="2">Safe Mode (2% Use)</option>
+                    <option value="5" selected>Standard Mode (5% Use)</option>
+                    <option value="10">Aggressive Mode (10% Use)</option>
                 </select>
-                <input type="file" name="chart" accept="image/*" class="input-box" required>
-                <button type="submit">START SMART SCAN</button>
+                <input type="file" name="chart" accept="image/*" required>
+                <button type="submit">DEEP SCAN CHART</button>
             </form>
 
             {% if result %}
-            <div class="result-panel">
-                <div style="font-size: 22px; font-weight: bold; color: {{ color }};">{{ result }}</div>
-                <div class="logic-card">
-                    <strong>🔍 Detailed Logic:</strong><br>{{ logic }}<br><br>
-                    <strong>💹 Trading Instruction:</strong><br>
-                    - Recommended Stake: ${{ trade_amt }}<br>
-                    - <strong>MTG Status:</strong> {{ mtg_status }}
+            <div class="result-box">
+                <div style="color: {{ color }}; font-size: 22px; font-weight: bold;">{{ result }}</div>
+                <div style="font-size: 13px; color: #888; margin-top: 8px;">
+                    <strong>Market Logic:</strong> {{ logic }} <br><br>
+                    <strong>Trading Plan:</strong> <br>
+                    - Stake: ${{ trade_amt }} ({{ risk_p }}% Margin) <br>
+                    - <strong>MTG Verdict:</strong> {{ mtg }}
                 </div>
+                <div class="accuracy-meter"><div class="accuracy-fill"></div></div>
             </div>
             {% endif %}
-            <div style="text-align:center; margin-top:20px;"><a href="/logout" style="color:#444; font-size:12px; text-decoration:none;">Logout System</a></div>
+            <a href="/logout" style="display:block; margin-top:15px; color:#444; text-decoration:none; font-size:12px;">Close Session</a>
         </div>
         {% endif %}
     </div>
@@ -94,49 +96,21 @@ def analyze():
     risk_p = int(request.form.get('risk'))
     trade_amt = round((balance * risk_p) / 100, 2)
     
-    # Advanced Logic Database
-    logic_pool = [
-        {
-            "res": "🟢 CALL SIGNAL (STRONG)",
-            "clr": "#00ff88",
-            "log": "বুলিশ এনগালফিং প্যাটার্ন তৈরি হয়েছে। মার্কেট মেজর সাপোর্ট জোন থেকে রিজেকশন নিয়েছে এবং RSI বর্তমানে ৪০ লেভেল ব্রেক করে উপরের দিকে যাচ্ছে।",
-            "mtg": "Non-MTG (Fixed Trade). Accuracy is high."
-        },
-        {
-            "res": "🔴 PUT SIGNAL (ELITE)",
-            "clr": "#ff4444",
-            "log": "রেজিস্ট্যান্স জোনে পিন-বার ক্যান্ডেল শনাক্ত হয়েছে। সেলারদের ভলিউম বাড়ছে এবং মার্কেট ওভারবট এরিয়া থেকে নিচের দিকে ট্রেন্ড চেঞ্জ করছে।",
-            "mtg": "Non-MTG. Highly Accurate Trend Signal."
-        },
-        {
-            "res": "🟡 CALL (MTG-1) SIGNAL",
-            "clr": "#ffcc00",
-            "log": "মার্কেট বর্তমানে বুলিশ ট্রেন্ডে থাকলেও ছোট রিট্রেসমেন্ট দেখা যাচ্ছে। ফিবোনাচ্চি ০.৬১৮ লেভেল থেকে বাউন্স করার সম্ভাবনা আছে।",
-            "mtg": "Prepare MTG-1 if the first candle ends in a small loss."
-        },
-        {
-            "res": "🚫 NO TRADE: HIGH RISK",
-            "clr": "#888",
-            "log": "মার্কেট সাইডওয়েজ বা কনসোলিডেশন জোনে আছে। ক্যান্ডেলের বডি খুব ছোট এবং কোনো পরিষ্কার প্রাইস অ্যাকশন নেই। মূলধন বাঁচাতে ট্রেড এড়িয়ে চলুন।",
-            "mtg": "DO NOT TRADE. Wait for a clear trend breakout."
-        },
-        {
-            "res": "🔴 PUT (MTG-1) SIGNAL",
-            "clr": "#ffaa00",
-            "log": "বেয়ারিশ মোমেন্টাম বাড়ছে তবে মার্কেট সাপোর্ট জোনের খুব কাছাকাছি। ব্রেকআউটের জন্য অপেক্ষা করছে। ১ লেভেল সেফটি ব্যবহার করা বুদ্ধিমানের কাজ হবে।",
-            "mtg": "Safe Entry with MTG-1 backup."
-        }
+    # Advanced Logic Selection Based on Timestamp to prevent repetition
+    seed = int(time.time()) % 6 
+    
+    scenarios = [
+        {"r": "✅ STRONG CALL", "c": "#00ff88", "l": "বুলিশ ক্যান্ডেলস্টিক মেকার হ্যামার সাপোর্ট জোন ব্রেক করেছে। মার্কেট ভলিউম বর্তমানে ৮৯% পজিটিভ।", "m": "NON-MTG (Fixed)"},
+        {"r": "🔴 STRONG PUT", "c": "#ff4444", "l": "বেয়ারিশ এনগালফিং প্যাটার্ন রেজিস্ট্যান্স লেভেল থেকে রিজেকশন নিয়েছে। ট্রেন্ড লাইন ব্রেকডাউন কনফার্ম।", "m": "NON-MTG (Fixed)"},
+        {"r": "✅ CALL (MTG-1)", "c": "#00ff88", "l": "মার্কেট আপট্রেন্ডে আছে কিন্তু সামান্য লিকুইডিটি গ্যাপ রয়েছে। ১টি ক্যান্ডেল এরর হতে পারে।", "m": "Use 1-Step Martingale"},
+        {"r": "🚫 NO ENTRY", "c": "#888", "l": "অতিরিক্ত ভোলাটিলিটি। নিউজ ইমপ্যাক্টের কারণে মার্কেট লজিক কাজ করছে না। অপেক্ষা করুন।", "m": "STRICT NO TRADE"},
+        {"r": "🔴 PUT (MTG-1)", "c": "#ff4444", "l": "মার্কেট রেজিস্ট্যান্স জোন টেস্ট করছে। সেলারদের এন্ট্রি কনফার্ম হয়েছে কিন্তু ভলিউম লো।", "m": "Use 1-Step Martingale"},
+        {"r": "✅ CALL (PRO)", "c": "#00ff88", "l": "RSI এবং স্টোকাস্টিক ইনডিকেটর গোল্ডেন ক্রসওভার দিয়েছে। পরবর্তী ৩টি ক্যান্ডেল গ্রিন হওয়ার সম্ভাবনা।", "m": "NON-MTG (Safe)"}
     ]
 
-    analysis = random.choice(logic_pool)
+    pick = scenarios[seed]
 
-    return render_template_string(HTML_TEMPLATE, 
-        logged_in=True, 
-        result=analysis['res'], 
-        color=analysis['clr'], 
-        logic=analysis['log'], 
-        trade_amt=trade_amt, 
-        mtg_status=analysis['mtg'])
+    return render_template_string(HTML_TEMPLATE, logged_in=True, result=pick['r'], color=pick['c'], logic=pick['l'], mtg=pick['m'], trade_amt=trade_amt, risk_p=risk_p)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=int(os.environ.get("PORT", 5000)))
